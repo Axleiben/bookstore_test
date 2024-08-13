@@ -1,34 +1,15 @@
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
+public class CartTests extends BaseTests {
 
-public class CartTests {
-
-    WebDriver driver;
-    WebDriverWait wait;
-
-    @BeforeEach
-    public void setUp() {
-
-        driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-
-    }
-    @AfterEach
-    public void quitDriver(){driver.quit();}
 
     @Test
     public void add_to_card_should_minicart_show_product_total_price() {
-        driver.get("http://localhost:8080/product/a-popular-history-of-astronomy-during-" +
+        driver.get(baseUrl + "/product/a-popular-history-of-astronomy-during-" +
                 "the-nineteenth-century-by-agnes-m-clerke/");
         WebElement addToCartButton = driver.findElement(By.name("add-to-cart"));
         addToCartButton.click();
@@ -44,7 +25,7 @@ public class CartTests {
 
     @Test
     public void addToCardTest() {
-        driver.get("http://localhost:8080/product/a-popular-history-of-astronomy-" +
+        driver.get(baseUrl + "/product/a-popular-history-of-astronomy-" +
                 "during-the-nineteenth-century-by-agnes-m-clerke/");
         WebElement addToCartButton = driver.findElement(By.name("add-to-cart"));
         addToCartButton.click();
@@ -55,11 +36,11 @@ public class CartTests {
     }
     @Test
     public void update_quantity_in_cart_should_update_total_proice() {
-        driver.get("http://localhost:8080/product/a-popular-history-of-astronomy-" +
+        driver.get(baseUrl + "/product/a-popular-history-of-astronomy-" +
                 "during-the-nineteenth-century-by-agnes-m-clerke/");
         driver.findElement(By.name("add-to-cart")).click();
 
-        driver.get("http://localhost:8080/cart/");
+        driver.get(baseUrl + "/cart/");
         WebElement quantityFields = driver.findElement(By.className("qty"));
         quantityFields.clear();
         quantityFields.sendKeys("3");
@@ -74,10 +55,10 @@ public class CartTests {
 
     @Test
     public void cart_not_changed_should_update_button_disbled() {
-        driver.get("http://localhost:8080/product/a-popular-history-of-astronomy-" +
+        driver.get(baseUrl + "/product/a-popular-history-of-astronomy-" +
                 "during-the-nineteenth-century-by-agnes-m-clerke/");
         driver.findElement(By.name("add-to-cart")).click();
-        driver.get("http://localhost:8080/cart/");
+        driver.get(baseUrl + "/cart/");
         WebElement quantityFields = driver.findElement(By.className("qty"));
         quantityFields.clear();
         quantityFields.sendKeys("3");
@@ -86,11 +67,10 @@ public class CartTests {
     }
     @Test
     public void chceck_placeholder_is_visible(){
-        driver.get("http://localhost:8080/");
+        driver.get(baseUrl);
         WebElement searchinput =  driver.findElement(By.id("wc-block-search__input-1"));
-        Assertions.assertEquals("Search products…", searchinput.getDomAttribute("placeholderd"),
+        Assertions.assertEquals("Search products…", searchinput.getDomAttribute("placeholder"),
                 "Placeholder is diffrent than expected");
 
     }
-
 }

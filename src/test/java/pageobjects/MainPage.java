@@ -12,7 +12,7 @@ public class MainPage extends pageobjects.BasePage {
 
     public MainPage go() {
         driver.get(baseURL);
-        return this;894
+        return this;
 
     }
 }

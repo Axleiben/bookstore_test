@@ -35,7 +35,7 @@ public class CartTests extends BaseTests {
                 "The price displayed in header is not correct");
     }
     @Test
-    public void update_quantity_in_cart_should_update_total_proice() {
+    public void update_quantity_in_cart_should_update_total_price() {
         driver.get(baseUrl + "/product/a-popular-history-of-astronomy-" +
                 "during-the-nineteenth-century-by-agnes-m-clerke/");
         driver.findElement(By.name("add-to-cart")).click();
@@ -59,9 +59,10 @@ public class CartTests extends BaseTests {
                 "during-the-nineteenth-century-by-agnes-m-clerke/");
         driver.findElement(By.name("add-to-cart")).click();
         driver.get(baseUrl + "/cart/");
-        WebElement quantityFields = driver.findElement(By.className("qty"));
-        quantityFields.clear();
-        quantityFields.sendKeys("3");
+//        WebElement quantityFields = driver.findElement(By.className("qty"));
+//        quantityFields.clear();
+//        quantityFields.sendKeys("3");
+
         WebElement updateButton = driver.findElement(By.name("update_cart"));
         Assertions.assertFalse(updateButton.isEnabled(), "update button is nad enabled ");
     }

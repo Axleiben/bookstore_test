@@ -1,8 +1,6 @@
 package helpers;
 
-import helpers.Browser;
-import helpers.ConfigurationReader;
-import helpers.NoSuchBrowserException;
+
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

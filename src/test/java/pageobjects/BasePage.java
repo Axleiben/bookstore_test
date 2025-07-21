@@ -32,6 +32,6 @@ public abstract class BasePage {
 
     protected void waitForLoadingToEnd(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        wait.until(ExpectedConditions.numberOfElementsToBe((By) loadingIcon,0));
+        wait.until(ExpectedConditions.numberOfElementsToBe((By) loadingIcons,0));
     }
 }
